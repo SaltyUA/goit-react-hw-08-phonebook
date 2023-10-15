@@ -1,15 +1,28 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { deleteContactByID, getContacts, postContact } from 'services/mockAPI';
+import axios from 'axios';
 
 export const fetchAllContacts = createAsyncThunk(
   'contacts/fetchAllContacts',
-  () => getContacts()
+  () => {
+    const response = axios('/contacts');
+    return response.data;
+  }
 );
 
-export const addContact = createAsyncThunk('contacts/addContact', contact =>
-  postContact(contact)
-);
+export const addContact = createAsyncThunk('contacts/addContact', contact => {
+  const response = axios.post('/cotacts', contact);
+  return response.data;
+});
 
-export const deleteContact = createAsyncThunk('contacts/deleteContact', id =>
-  deleteContactByID(id)
+export const deleteContact = createAsyncThunk('contacts/deleteContact', id => {
+  const response = axios.delete(`/contacts/${id}`);
+  return response.data;
+});
+
+export const updateContact = createAsyncThunk(
+  'contacts/updateContact',
+  (id, contact) => {
+    const response = axios.patch(`/contacts/${id}`, contact);
+    return response.data;
+  }
 );

@@ -1,13 +1,13 @@
 export const handlePending = state => {
-  state.contacts.isLoading = true;
+  state.isLoading = true;
 };
 
 export const handleRejected = (state, { error }) => {
-  state.contacts.isLoading = false;
-  state.contacts.error = error.message;
+  state.isLoading = false;
+  state.error = error.message;
 };
 
 export const handleFullfilled = state => {
-  state.contacts.isLoading = false;
-  state.contacts.error = null;
+  state.isLoading = false;
+  state.error = null;
 };
