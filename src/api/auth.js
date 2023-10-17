@@ -18,20 +18,20 @@ export async function signUp(credentials) {
   return data;
 }
 
-export const signIn = credentials => {
-  const { data } = instance.post('/users/signup', credentials);
+export async function signIn(credentials) {
+  const { data } = await instance.post('/users/signup', credentials);
   setToken(data.token);
   return data;
-};
+}
 
-export const signOut = () => {
-  const { data } = instance.post('/users/logout');
+export async function signOut() {
+  const { data } = await instance.post('/users/logout');
   clearToken();
   return data;
-};
+}
 
-export const refresh = token => {
+export async function refresh(token) {
   setToken(token);
-  const { data } = instance('/users/current');
+  const { data } = await instance('/users/current');
   return data;
-};
+}

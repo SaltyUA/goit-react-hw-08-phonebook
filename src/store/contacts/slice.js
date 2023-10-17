@@ -35,7 +35,7 @@ const contactsSlice = createSlice({
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected)
       .addMatcher(
-        action => action.type.endsWith('/fullfiled'),
+        action => action.type.endsWith('/fulfilled'),
         handleFullfilled
       );
   },

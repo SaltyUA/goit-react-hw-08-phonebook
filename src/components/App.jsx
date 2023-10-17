@@ -9,11 +9,12 @@ import Contacts from 'pages/contacts';
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<SharedLayout />} />
-      <Route index element={<Homepage />} />
-      <Route path="/signin" element={<SignIn />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/contacts" element={<Contacts />} />
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Homepage />} />
+        <Route path="signin" element={<SignIn />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="contacts" element={<Contacts />} />
+      </Route>
     </Routes>
   );
 };

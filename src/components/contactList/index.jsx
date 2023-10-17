@@ -13,6 +13,7 @@ const ContactList = () => {
   useEffect(() => {
     dispatch(fetchAllContacts());
   }, [dispatch]);
+
   return (
     <>
       <FilterInput />
