@@ -5,15 +5,38 @@ import Homepage from 'pages/homepage';
 import SignIn from 'pages/signin';
 import SignUp from 'pages/signup';
 import Contacts from 'pages/contacts';
+import PublicGuard from 'guards/publicGuard';
+import PrivateGuard from 'guards/privateGuard';
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Homepage />} />
-        <Route path="signin" element={<SignIn />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="contacts" element={<Contacts />} />
+        <Route
+          path="signin"
+          element={
+            <PublicGuard>
+              <SignIn />
+            </PublicGuard>
+          }
+        />
+        <Route
+          path="signup"
+          element={
+            <PublicGuard>
+              <SignUp />
+            </PublicGuard>
+          }
+        />
+        <Route
+          path="contacts"
+          element={
+            <PrivateGuard>
+              <Contacts />
+            </PrivateGuard>
+          }
+        />
       </Route>
     </Routes>
   );
