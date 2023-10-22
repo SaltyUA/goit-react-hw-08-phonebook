@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import SharedLayout from './sharedLayout';
 import Homepage from 'pages/homepage';
 import SignIn from 'pages/signin';

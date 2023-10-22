@@ -4,6 +4,7 @@ export const FormContainer = styled('form')(() => ({
   paddingTop: 20,
   margin: '0 auto',
   border: '1px solid black',
+  borderRadius: 5,
   padding: 10,
   display: 'flex',
   flexDirection: 'column',

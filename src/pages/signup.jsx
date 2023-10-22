@@ -1,3 +1,4 @@
+import { FormContainer } from 'components/form/Form.styled';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -27,15 +28,47 @@ const SignUp = () => {
   return (
     <>
       <h2>SignUp</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input type="text" name="name" />
-        <label htmlFor="email">E-mail</label>
-        <input type="email" name="email" />
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" />
-        <button type="submit">SignUp</button>
-      </form>
+      <FormContainer onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="name">
+            Name
+          </label>
+          <input
+            className="form-control"
+            type="text"
+            name="name"
+            placeholder="name"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="email">
+            E-mail
+          </label>
+          <input
+            className="form-control"
+            type="email"
+            name="email"
+            placeholder="name@example.com"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="form-control"
+            type="password"
+            name="password"
+            placeholder="********"
+            required
+          />
+        </div>
+        <button className="btn btn-primary" type="submit">
+          SignUp
+        </button>
+      </FormContainer>
     </>
   );
 };

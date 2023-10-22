@@ -1,15 +1,27 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectIsLoggedIn } from 'store/selectors';
 
 const HomePage = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
-    <>
-      <h1>Phonebook</h1>
+    <div className="container">
       <p>This app created on React course for GoIT</p>
-      <p>
-        Please <Link to="/signin">signin</Link> or{' '}
-        <Link to="/signup">signup</Link>
-      </p>
-    </>
+      {isLoggedIn ? (
+        <p>
+          {' '}
+          <Link to={'/contacts'} className="">
+            To Contacts
+          </Link>
+        </p>
+      ) : (
+        <p>
+          Please <Link to="/signin">signin</Link> or{' '}
+          <Link to="/signup">signup</Link>
+        </p>
+      )}
+    </div>
   );
 };
 
