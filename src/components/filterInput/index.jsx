@@ -8,7 +8,8 @@ import { setFilter } from 'store/filter/slice';
 const FilterInput = () => {
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
-  const handleFilter = ({ target: { value } }) => dispatch(setFilter(value));
+  const handleFilter = ({ target: { value } }) =>
+    dispatch(setFilter(value.trim()));
 
   return (
     <FilterContainer>
