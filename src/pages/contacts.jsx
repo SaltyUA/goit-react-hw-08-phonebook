@@ -16,9 +16,9 @@ const Contacts = () => {
 
   return (
     <div>
-      <h2>Add contact</h2>
+      <h2 className="text-primary mb-4">Add contact</h2>
       <Form />
-      <h2>Contacts</h2>
+      <h2 className="text-primary mb-4 mt-4">Contacts</h2>
       <ContactList />
       <ToastContainer />
     </div>

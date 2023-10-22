@@ -1,12 +1,14 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SharedLayout from './sharedLayout';
-import Homepage from 'pages/homepage';
-import SignIn from 'pages/signin';
-import SignUp from 'pages/signup';
-import Contacts from 'pages/contacts';
 import PublicGuard from 'guards/publicGuard';
 import PrivateGuard from 'guards/privateGuard';
+import { lazy } from 'react';
+
+const SharedLayout = lazy(() => import('./sharedLayout'));
+const Homepage = lazy(() => import('../pages/homepage'));
+const SignIn = lazy(() => import('../pages/signin'));
+const SignUp = lazy(() => import('../pages/signup'));
+const Contacts = lazy(() => import('../pages/contacts'));
 
 const App = () => {
   return (
@@ -38,6 +40,7 @@ const App = () => {
           }
         />
       </Route>
+      <Route path="*" element={<Navigate to={'/'} />} />
     </Routes>
   );
 };

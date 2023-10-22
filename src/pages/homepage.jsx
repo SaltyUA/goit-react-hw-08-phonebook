@@ -11,7 +11,7 @@ const HomePage = () => {
       {isLoggedIn ? (
         <p>
           {' '}
-          <Link to={'/contacts'} className="">
+          <Link to={'/contacts'} className="btn btn-primary">
             To Contacts
           </Link>
         </p>

@@ -1,18 +1,11 @@
 import { FormContainer } from 'components/form/Form.styled';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { register } from 'store/auth/thunk';
-import { selectIsLoggedIn } from 'store/selectors';
 
 const SignUp = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    isLoggedIn && navigate('/contacts');
-  }, [navigate, isLoggedIn]);
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -27,7 +20,7 @@ const SignUp = () => {
   };
   return (
     <>
-      <h2>SignUp</h2>
+      <h2 className="mb-4">SignUp</h2>
       <FormContainer onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label" htmlFor="name">
@@ -65,6 +58,9 @@ const SignUp = () => {
             required
           />
         </div>
+        <Link to={'/signin'} className="mb-2 text-decoration-none fw-medium">
+          SignIn
+        </Link>
         <button className="btn btn-primary" type="submit">
           SignUp
         </button>

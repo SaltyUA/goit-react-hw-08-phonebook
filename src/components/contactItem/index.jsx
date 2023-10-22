@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-import { ContactTypography, DeleteButton } from './ContactItem.styled';
 import { deleteContact } from 'store/contacts/thunks';
 
 const ContactItem = ({ name, id, number }) => {
@@ -8,12 +7,18 @@ const ContactItem = ({ name, id, number }) => {
   const handleDelete = () => dispatch(deleteContact(id));
 
   return (
-    <ContactTypography>
-      {name}: {number}
-      <DeleteButton onClick={handleDelete} type="button">
+    <li className="list-group-item">
+      <span className="fw-medium">
+        {name} : {number}
+      </span>
+      <button
+        className="btn btn-danger ms-4"
+        onClick={handleDelete}
+        type="button"
+      >
         Delete
-      </DeleteButton>
-    </ContactTypography>
+      </button>
+    </li>
   );
 };
 

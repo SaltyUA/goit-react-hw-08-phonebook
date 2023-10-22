@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import { refreshUser } from 'store/auth/thunk';
-import { selectIsLoggedIn, selectToken, selectUser } from 'store/selectors';
+import { selectIsLoggedIn, selectToken } from 'store/selectors';
 import { selectError } from 'store/selectors';
 import 'react-toastify/dist/ReactToastify.css';
 import UserMenu from 'components/userMenu';
 import LoginMenu from 'components/loginMenu';
+import { refreshUser } from 'store/auth/thunk';
+import Skeleton from 'react-loading-skeleton';
 
 const SharedLayout = () => {
   const error = useSelector(selectError);
@@ -16,8 +17,8 @@ const SharedLayout = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    isLogged && token && dispatch(refreshUser());
-  });
+    !isLogged && token && dispatch(refreshUser());
+  }, [dispatch, isLogged, token]);
 
   useEffect(() => {
     error && toast.warning(error);
@@ -25,14 +26,16 @@ const SharedLayout = () => {
 
   return (
     <>
-      <header className="container d-flex justify-content-around align-items-center">
-        <Link to="/" className="h1">
+      <header className="container d-flex justify-content-around align-items-center mb-2">
+        <Link to="/" className="h1 text-primary">
           Phonebook
         </Link>
         {isLogged ? <UserMenu /> : <LoginMenu />}
       </header>
-      <Outlet />
-      <ToastContainer />
+      <Suspense fallback={<Skeleton count={10} />}>
+        <Outlet />
+        <ToastContainer />
+      </Suspense>
     </>
   );
 };
