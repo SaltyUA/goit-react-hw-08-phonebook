@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PublicGuard from 'guards/publicGuard';
 import PrivateGuard from 'guards/privateGuard';
 import { lazy } from 'react';
+import SharedLayout from './sharedLayout';
 
-const SharedLayout = lazy(() => import('./sharedLayout'));
 const Homepage = lazy(() => import('../pages/homepage'));
 const SignIn = lazy(() => import('../pages/signin'));
 const SignUp = lazy(() => import('../pages/signup'));

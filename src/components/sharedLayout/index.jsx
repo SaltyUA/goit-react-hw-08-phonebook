@@ -34,8 +34,8 @@ const SharedLayout = () => {
       </header>
       <Suspense fallback={<Skeleton count={10} />}>
         <Outlet />
-        <ToastContainer />
       </Suspense>
+      <ToastContainer />
     </>
   );
 };
